@@ -5,16 +5,27 @@
  */
 package br.edu.ifpe.recife.model.classes;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.ManyToOne;
+
 /**
  *
  * @author melo
  */
+
+@Embeddable
 public class ItemOferta {
     
+    @Column
     private int codigo;
+    @Column
     private Double preco;
+    @Column
     private int quantidade;
+    @Column
     private String obsevarcoes;
+    @ManyToOne
     private Produto produto;
 
     public int getCodigo() {

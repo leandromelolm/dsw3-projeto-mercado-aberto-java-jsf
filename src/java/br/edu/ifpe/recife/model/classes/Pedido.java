@@ -6,17 +6,31 @@
 package br.edu.ifpe.recife.model.classes;
 
 import java.util.Date;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author melo
  */
+
+@Entity
 public class Pedido {
     
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int codigo;
+    @Temporal (TemporalType.TIME)
     private Date dataCompra;
     private String status;
+    @Temporal (TemporalType.DATE)
     private Date dataEntrega;
+    @Embedded
     private ItemPedido item;
     
     public Pedido(){

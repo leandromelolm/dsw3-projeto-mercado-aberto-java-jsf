@@ -24,13 +24,19 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    @Column(length = 11, unique = true, nullable = false)    
+    @Column(length = 14, unique = true, nullable = false)    
     private String cpf;
+    @Column(length = 150,nullable = false)
     private String nome;
+    @Column(length = 30, nullable = false)
     private String email;
+    @Column(length = 20, nullable = false)
     private String senha;
+    @Column(length = 250, nullable = false)
     private String endereco;
+    @Column(length = 9, nullable = false)
     private String cep;
+    @Column(length = 11, nullable = false)
     private String telefone;    
     @OneToMany
     private List<Avaliacao> recebidas;

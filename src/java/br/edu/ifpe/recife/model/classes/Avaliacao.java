@@ -6,18 +6,35 @@
 package br.edu.ifpe.recife.model.classes;
 
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author melo
  */
+
+@Entity
 public class Avaliacao {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+    @Column (nullable = false)
     private int pontuacao;
+    @Column (nullable = false)
     private String titulo;
+    @Column (nullable = false)
     private String comentario;
+    @Temporal (TemporalType.DATE)
     private Date dataAvaliacao;
+    @ManyToOne
     private Usuario autor;
     
     public Avaliacao(){

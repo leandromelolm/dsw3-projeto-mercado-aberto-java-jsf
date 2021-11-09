@@ -29,7 +29,7 @@ private static ManagerDao myself = null;
     private EntityManagerFactory emf = null;
 
     private ManagerDao() {
-        this.emf = Persistence.createEntityManagerFactory("MercadoObscuroPU");
+        this.emf = Persistence.createEntityManagerFactory("MercadoAbertoPU");
     }
 
     public void insert(Object o) {

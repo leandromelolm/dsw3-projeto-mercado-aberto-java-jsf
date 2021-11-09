@@ -5,15 +5,23 @@
  */
 package br.edu.ifpe.recife.model.classes;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  *
  * @author melo
  */
+
+@Embeddable
 public class ItemPedido {
-    
+    @Column(name = "codigo", length = 150, nullable = false)
     private int codigo;
+    @Column
     private Double preco;
+    @Column
     private int quantidade;
+    @Column
     private Oferta oferta;
 
     public int getCodigo() {

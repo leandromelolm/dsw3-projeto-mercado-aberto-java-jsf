@@ -8,17 +8,33 @@ package br.edu.ifpe.recife.model.classes;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author melo
  */
+
+@Entity
 public class Oferta {
     
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int codigo;
+    @Temporal (TemporalType.DATE)
     private Date data;
+    @Temporal (TemporalType.DATE)
     private Date validade;
+    @Embedded
     private ItemOferta item;
+    @OneToMany
     private List<Pedido> realizados;
     
     public Oferta(){
