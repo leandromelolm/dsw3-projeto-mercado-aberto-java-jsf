@@ -7,30 +7,51 @@ package br.edu.ifpe.recife.model.classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author melo
  */
+@Entity
 public class Usuario {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int codigo;
+    @Column(length = 11, unique = true, nullable = false)    
     private String cpf;
     private String nome;
     private String email;
     private String senha;
     private String endereco;
     private String cep;
-    private String telefone;
-    
+    private String telefone;    
+    @OneToMany
     private List<Avaliacao> recebidas;
-    
+    @OneToMany
     private List<Pedido> realizados;
-    
+    @OneToMany
     private List<Oferta> ofertas;
     
     public Usuario(){
     this.ofertas = new ArrayList<>();
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+    
+    
 
     public String getCpf() {
         return cpf;
