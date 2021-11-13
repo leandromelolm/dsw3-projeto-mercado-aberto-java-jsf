@@ -7,24 +7,30 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
-            <p:panelGrid columns="2">
+        <h:form id="formCadastro">
+            <p:panelGrid columns="3">
                 
                 <h:outputText value="Nome:"/>
-                <p:inputText value="#{produtoController.cadastro.nome}"/>
+                <p:inputText id="txtNome" value="#{produtoController.cadastro.nome}"
+                             required="true" requiredMessage="O campo é requerido"/>
+                <p:message for="txtNome"/>
                 
                 <h:outputText value="Marca:"/>
-                <p:inputText value="#{produtoController.cadastro.marca}"/>
-                               
+                <p:inputText id="txtMarca" value="#{produtoController.cadastro.marca}"
+                             required="true" requiredMessage="O campo é requerido"/>
+                <p:message for="txtMarca"/>
+                
                 <h:outputText value="Categoria:"/>
                 <p:inputText value="#{produtoController.cadastro.categoria}"/>
+                <h:outputText/>
                 
                 <h:outputText value="Descrição:"/>
                 <p:editor value="#{produtoController.cadastro.descricao}"/>
+                <h:outputText/>
                 
             </p:panelGrid>
             
-            <p:commandButton value="Cadastrar" action="#{produtoController.insert()}">
+            <p:commandButton value="Cadastrar" action="#{produtoController.insert()}" update="formCadastro">
                 <p:confirm message="Deseja cadastrar o produto?"/>
             </p:commandButton>
             

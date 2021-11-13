@@ -7,6 +7,7 @@ package br.edu.ifpe.recife.controllers;
 
 import br.edu.ifpe.recife.model.classes.Produto;
 import br.edu.ifpe.recife.model.dao.ManagerDao;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -38,6 +39,12 @@ public class ProdutoController {
 
         this.cadastro = new Produto();
         return "index.xhtml";
+    }
+    
+    public List<Produto> readAll(){
+    
+        String query = "select p from Produto p";
+        return ManagerDao.getCurrentInstance().read(query, Produto.class);
     }
 
     public Produto getCadastro() {
