@@ -17,13 +17,9 @@ import javax.persistence.ManyToOne;
 @Embeddable
 public class ItemOferta {
     
-    @Column
     private int codigo;
-    @Column
     private Double preco;
-    @Column
     private int quantidade;
-    @Column
     private String obsevarcoes;
     @ManyToOne
     private Produto produto;

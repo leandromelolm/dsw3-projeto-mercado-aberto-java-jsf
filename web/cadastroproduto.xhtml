@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:panelGrid columns="2">
+                
+                <h:outputText value="Nome:"/>
+                <p:inputText value="#{produtoController.cadastro.nome}"/>
+                
+                <h:outputText value="Marca:"/>
+                <p:inputText value="#{produtoController.cadastro.marca}"/>
+                               
+                <h:outputText value="Categoria:"/>
+                <p:inputText value="#{produtoController.cadastro.categoria}"/>
+                
+                <h:outputText value="Descrição:"/>
+                <p:editor value="#{produtoController.cadastro.descricao}"/>
+                
+            </p:panelGrid>
+            
+            <p:commandButton value="Cadastrar" action="#{produtoController.insert()}">
+                <p:confirm message="Deseja cadastrar o produto?"/>
+            </p:commandButton>
+            
+        </h:form>
+        
+        <p:confirmDialog global="true">
+            <p:commandButton value="sim" styleClass="ui-confirmdialog-yes"/>
+            <p:commandButton value="não" styleClass="ui-confirmdialog -no"/>
+        </p:confirmDialog>
+        
+    </h:body>
+</html>

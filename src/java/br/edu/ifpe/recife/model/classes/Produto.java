@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
  *
@@ -20,13 +19,10 @@ public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    @Column(name = "nome_produto",length = 70, unique = true, nullable = false)
+    @Column(length = 60, nullable = false, unique = true)
     private String nome;
-    @Column(length = 150, nullable = false)
     private String marca;
-    @Column(length = 150, nullable = false)
     private String categoria;
-    @Column(length = 500, nullable = false)
     private String descricao;
     @OneToMany
     private List<Avaliacao> avaliacoes;

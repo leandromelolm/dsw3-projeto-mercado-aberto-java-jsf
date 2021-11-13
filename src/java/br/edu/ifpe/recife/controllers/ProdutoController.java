@@ -8,8 +8,11 @@ package br.edu.ifpe.recife.controllers;
 import br.edu.ifpe.recife.model.classes.Produto;
 import br.edu.ifpe.recife.model.dao.ManagerDao;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+
 
 /**
  *
@@ -27,11 +30,14 @@ public class ProdutoController {
         this.cadastro = new Produto();
     }
     
-    public void insert(){
+    public String insert(){
         ManagerDao.getCurrentInstance().insert(this.cadastro);
 //        repositorios.RepositorioProduto.getCurrentInstance().inserir(cadastro);
                 
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produto "+this.cadastro.getNome() +" cadastrado com sucesso!"));
+
         this.cadastro = new Produto();
+        return "index.xhtml";
     }
 
     public Produto getCadastro() {

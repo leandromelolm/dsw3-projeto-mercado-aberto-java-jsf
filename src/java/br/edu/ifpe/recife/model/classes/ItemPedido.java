@@ -15,13 +15,10 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class ItemPedido {
-    @Column(name = "codigo", length = 150, nullable = false)
+
     private int codigo;
-    @Column
     private Double preco;
-    @Column
     private int quantidade;
-    @Column
     private Oferta oferta;
 
     public int getCodigo() {
