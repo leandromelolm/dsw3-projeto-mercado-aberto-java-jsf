@@ -39,7 +39,7 @@ public class ProdutoController {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produto "+this.cadastro.getNome() +" cadastrado com sucesso!"));
 
         this.cadastro = new Produto();
-        return "index.xhtml";
+        return "apresentaprodutos.xhtml";
     }
     
     public List<Produto> readAll(){

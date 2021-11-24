@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>ConectaVacina|Menu</title>
+    </h:head>
+    <h:body>
+        
+        <p:growl id="grow" showDetail="true" showSummary="true" redisplay="false" life="5000"/>
+        
+        <h:form id="forMenu">
+            <p:menubar>
+                <p:menuitem value="home" url="index.xhtml"/>
+                <p:submenu label="Produtos">
+                    <p:menuitem title="Produtos Cadastrados" value="Produtos Cadastrados" url="apresentaprodutos.xhtml"/>                    
+                    <p:menuitem title="Cadastrar Produto" value="Cadastrar Novo Produto" url="cadastroproduto.xhtml"/>                    
+                </p:submenu>                
+                <p:submenu label="Usuarios">                   
+                    <p:menuitem title="Usuarios cadastrado" value="Usuarios cadastrados" url=""/>                    
+                    <p:menuitem title="Cadastrar Usuário" value="Cadastrar Novo Usuário" url=""/>                   
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <p:separator/>
+    </h:body>
+</html>
+
