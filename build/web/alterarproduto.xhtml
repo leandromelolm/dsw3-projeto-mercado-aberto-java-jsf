@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+        <title>MercadoAberto|AlterarCadastroProduto</title>
+    </h:head>
+    <h:body>
+        
+        <ui:include src="menu.xhtml"/>
+        
+        <h2>Alterar Cadastro do Produto</h2> 
+        
+        <p:messages id="messages" showDetail="true" closable="true"/>
+        
+        <h:form id="formCadastro"> 
+            
+            <p:panelGrid columns="3">
+                
+                <h:outputText value="codigo"/>
+                <h:outputText value="#{produtoController.selecao.codigo}"/>
+                <h:outputText/>
+                
+                
+                <h:outputText value="Nome"/>
+                <p:inputText id="txtNome"  value="#{produtoController.selecao.nome}"
+                             required="true" requiredMessage="O campo nome é obrigatorio"/>
+                <p:message for="txtNome"/>
+                
+                <h:outputLabel value="Marca"/>
+                <p:inputText id="txtFabricante" value="#{produtoController.selecao.marca}"
+                             required="true" requiredMessage="O campo fabricante é obrigatorio"/>
+                <p:message for="txtFabricante"/>
+                
+                <h:outputText value="Categoria"/>
+                <p:inputText id="txtCategoria" value="#{produtoController.selecao.categoria}"
+                             required="true" requiredMessage="O campo é obrigatorio"/>
+                <p:message for="txtCategoria"/>
+                
+                <h:outputText  value="Descrição"/>
+                <p:editor id="txtDescricao" value="#{produtoController.selecao.descricao}"
+                             required="true"  requiredMessage="O campo é obrigatorio"/>
+                <p:message for="txtDescricao"/>
+                
+            </p:panelGrid>  
+
+            <p:commandButton value="Alterar cadastro" action="#{produtoController.update()}" update="formCadastro">
+                <p:confirm message="Deseja alterar cadastro?"/>            
+            </p:commandButton>
+            
+        </h:form>  
+        
+        <h:form>
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="sim" styleClass="ui-confirmdialog-yes"/>
+                <p:commandButton value="não" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            </p:confirmDialog>
+        </h:form>
+    </h:body>
+</html>
+

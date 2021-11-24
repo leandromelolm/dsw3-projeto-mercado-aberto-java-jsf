@@ -32,20 +32,27 @@ public class ProdutoController {
         this.cadastro = new Produto();
     }
     
-    public String insert(){
+    public void insert(){
         ManagerDao.getCurrentInstance().insert(this.cadastro);
-//        repositorios.RepositorioProduto.getCurrentInstance().inserir(cadastro);
-                
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Produto "+this.cadastro.getNome() +" cadastrado com sucesso!"));
-
+//        repositorios.RepositorioProduto.getCurrentInstance().inserir(cadastro); 
         this.cadastro = new Produto();
-        return "apresentaprodutos.xhtml";
+//        messageInfo();
+//        return "apresentaprodutos.xhtml";
     }
     
     public List<Produto> readAll(){
     
         String query = "select p from Produto p";
         return ManagerDao.getCurrentInstance().read(query, Produto.class);
+    }
+    
+    public String update(){
+        ManagerDao.getCurrentInstance().update(this.selecao);
+        
+        FacesContext.getCurrentInstance().addMessage(null,
+                 new FacesMessage("alteração salva! ",
+                        "Registro do código "+this.selecao.getCodigo()+ " alterado com sucesso."));
+        return "apresentaprodutos.xhtml";
     }
 
     public Produto getCadastro() {
@@ -64,6 +71,24 @@ public class ProdutoController {
         this.selecao = selecao;
     }
     
+    public void delete(){
     
+        ManagerDao.getCurrentInstance().delete(this.selecao);
+        
+        FacesContext.getCurrentInstance().addMessage(null,
+                new FacesMessage("registro excluido! ",
+                        "Registro de código número " +this.getSelecao().getCodigo() + " deletado com sucesso!"));        
+    }
+    
+    public String messageInfo() {
+           
+         FacesContext.getCurrentInstance().addMessage
+        (null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastro salvo!", 
+                this.cadastro.getCodigo() +
+               " " +this.cadastro.getNome()+
+                       " cadastrada com sucesso!"));
+        insert();
+        return "apresentaprodutos.xhtml";
+    }
     
 }

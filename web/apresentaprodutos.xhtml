@@ -12,6 +12,9 @@
         <ui:include src="menu.xhtml"/>  
         <h1>Apresentação de Produtos</h1>
         
+        <p:messages id="messages" showDetail="true" closable="true">            
+        </p:messages>
+        
         <h:form id="formApresentaProduto">
             <p:dataTable  id="tableProduto" var="item" value="#{produtoController.readAll()}" paginator="true" rows="10"
                           selectionMode="single" selection="#{produtoController.selecao}" rowKey="#{item.codigo}">
@@ -39,6 +42,16 @@
             
             <p:commandButton value="Visualizar detalhes" oncomplete="PF('widDialVisualizaProduto').show()"
                              update=":dialVisualizaProduto"/>
+            <p:commandButton value="alterar cadastro" action="alterarproduto.xhtml"/>
+            <p:commandButton value="excluir cadastro" action="#{produtoController.delete()}" update=":formApresentaProduto:tableProduto  :grow  :messages">
+                <p:confirm message="Deseja realmente excluir cadastro?"/>
+            </p:commandButton>
+            
+            <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                <p:commandButton value="sim" styleClass="ui-confirmdialog-yes"/>
+                <p:commandButton value="não" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            </p:confirmDialog>
+            
         </h:form>
         
             <p:dialog id="dialVisualizaProduto" visible="false" resizable="false" closable="false" modal="true"
