@@ -22,6 +22,7 @@ import javax.persistence.OneToMany;
 public class Usuario {
     
     @Id
+    @Column(name = "ID_USUARIO")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     @Column(length = 14, unique = true, nullable = false)    
