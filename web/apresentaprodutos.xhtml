@@ -9,10 +9,8 @@
     </h:head>
     <h:body>
         <h:form id="formApresentaProduto">
-            <p:dataTable 
-                id="tabela" var="item" 
-                value="#{produtoController.readAll()}"
-                paginator="true" rows="10">
+            <p:dataTable  id="tableProduto" var="item" value="#{produtoController.readAll()}" paginator="true" rows="10"
+                          selectionMode="single" selection="#{produtoController.selecao}" rowKey="#{item.codigo}">
                 
                 <f:facet name="header">
                     Produtos Cadastrados
@@ -34,9 +32,42 @@
                     #{item.categoria}
                 </p:column>            
             </p:dataTable>
-
             
+            <p:commandButton value="Visualizar detalhes" oncomplete="PF('widDialVisualizaProduto').show()"
+                             update=":dialVisualizaProduto"/>
         </h:form>
+        
+            <p:dialog id="dialVisualizaProduto" visible="false" resizable="false" closable="false" modal="true"
+                  closeOnEscape="true"  widgetVar="widDialVisualizaProduto">
+            <p:panelGrid columns="2">
+                
+                <f:facet name="header">
+                    Produto cadastrada
+                </f:facet>
+                
+                <h:outputText value="Codigo"/>
+                <h:outputText value="#{produtoController.selecao.codigo}"/>
+                
+                <h:outputText value="Nome"/>
+                <h:outputText value="#{produtoController.selecao.nome}"/>
+                
+                <h:outputText value="Marca"/>
+                <h:outputText value="#{produtoController.selecao.marca}"/>
+                
+                <h:outputText value="Categoria"/>
+                <h:outputText value="#{produtoController.selecao.categoria}"/>
+                
+                <h:outputText value="Descrição"/>
+                <h:outputText value="#{produtoController.selecao.descricao}"/>
+                
+            </p:panelGrid>
+            
+            <f:facet name="footer">
+                <h:form>
+                    <p:commandButton value="close" oncomplete="PF('widDialVisualizaProduto').hide()"/>
+                </h:form>
+            </f:facet>            
+        </p:dialog>        
     </h:body>
 </html>
 

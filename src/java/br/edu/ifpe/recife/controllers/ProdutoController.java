@@ -25,6 +25,7 @@ import javax.faces.context.FacesContext;
 public class ProdutoController {
     
     private Produto cadastro;
+    private Produto selecao;
     
     @PostConstruct
     public void init(){
@@ -54,5 +55,15 @@ public class ProdutoController {
     public void setCadastro(Produto cadastro) {
         this.cadastro = cadastro;
     }    
+
+    public Produto getSelecao() {
+        return selecao;
+    }
+
+    public void setSelecao(Produto selecao) {
+        this.selecao = selecao;
+    }
+    
+    
     
 }
